@@ -8,12 +8,14 @@ This example uses GPT-2. Install Python and use the `requirement.txt` to install
 Run the following command:
 
 ```
-python -m transformers.onnx --model=gpt2 out/
+python -m transformers.onnx --model=gpt2 rsummarizer/out/
 ```
 
 Then run `python generate.py` to create the vocab and merges files that are also needed.
 
 ## Help needed
-The current implementation doesn't generate any problems with the compiler, but only provides a single word out. According to ChatGPT this is because _"The current approach takes the index with the maximum value from the output tensor, which only gives you a single word as output. Instead, you should generate the output sequence by sampling from the probability distribution of the model output."_.
+The current implementation doesn't generate any problems with the compiler, but only provides a single word out regardless of the input.
 
-Please file a pull request with a plausible fix if you have one! 
+According to ChatGPT this is because _"The current approach takes the index with the maximum value from the output tensor, which only gives you a single word as output. Instead, you should generate the output sequence by sampling from the probability distribution of the model output."_, but my suspicion is that this has to be about the `config.json` and `merges.txt` files that might not be quite right.
+
+Please file a pull request with a plausible fix if you have one!

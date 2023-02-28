@@ -6,5 +6,5 @@ Additionally, use `python -m transformers.onnx --model=gpt2 out/` to create the 
 """
 
 tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-tokenizer.save_pretrained("out")
-tokenizer.save_vocabulary("out")
+tokenizer.save_pretrained("rsummarizer/out")
+tokenizer.save_vocabulary("rsummarizer/out")
