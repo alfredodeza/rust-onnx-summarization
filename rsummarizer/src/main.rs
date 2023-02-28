@@ -26,13 +26,12 @@ fn main() -> Result<(), Error> {
 
     // Tokenize the input text
     let input_text = "Hello world! This is a sample input text.";
-    //  let tokens = sp.encode(input_text, None, 5, &TruncationStrategy::LongestFirst, 0);
     let encoding = tokenizer.encode(input_text, None, 5, &TruncationStrategy::LongestFirst, 0);
 
     // Convert the input encoding to a tensor
     let input_arr =
         Array2::from_shape_vec((1, encoding.token_ids.len()), encoding.token_ids.clone())?;
-    //let mask_arr = Array2::from_shape_vec((1, encoding.mask.len()), encoding.mask.clone())?;
+
     let mask_arr = Array2::from_shape_vec(
         (1, encoding.mask.len()),
         encoding.mask.iter().map(|x| *x as i64).collect(),
